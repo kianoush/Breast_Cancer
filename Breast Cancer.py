@@ -7,7 +7,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 import torch
-import os
 
 """
 import data
@@ -68,7 +67,7 @@ num_sample_valid = torch.tensor(X_valid.shape[0])
 
 num_epochs = 200
 for epoch in range(num_epochs):
-    optim = optimizer.zero_grad()
+    optimizer.zero_grad()
     Y_pred = model(X_train)
     loss_value = loss(Y_pred, Y_train)
 
@@ -87,7 +86,7 @@ for epoch in range(num_epochs):
 
 yp = model(X_test)
 num_corrects = torch.sum(torch.max(yp, 1)[1]==Y_test)
-acc_test = num_corrects.float() / float(num_sample_valid)
+acc_test = num_corrects.float() / float(num_sample_test)
 print('Test Accurecy: ', acc_test.item())
 
 
